@@ -3,9 +3,9 @@
 #+STARTUP: inlineimages
 
 * Abstract
-** TSNE visualizes high dimensional data by giving a location in a 2d/3d mapping.
-** Improves on previous visualizations by reducing the crowind problem
-** Through the use of random walks it is possible to use this \(O(n^2)\) algorithm for large datasets
+TSNE visualizes high dimensional data by giving a location in a 2d/3d mapping.
+Improves on previous visualizations by reducing the crowind problem
+Through the use of random walks it is possible to use this \(O(n^2)\) algorithm for large datasets
 * Introduction
 ** Previous visualization techniques only allow the user to display the data in 2d/3d but leave the interpretation to the user.
 ** The goal of dimensionality reduction methods is to reduce the high dimensional data of \(X = \{x_1...x_n\}\) to a set of points \(Y = \{y_1...y_n\}\)
@@ -14,7 +14,7 @@
 * Stochastic Neighbor Embedding (SNE)
 ** Converts high dimensional euclidean distances into conditional probablistic distances (similarities)
 ** Each similarity represents the probability of point \(x_i\) to chose point \(x_j\) as a neighbor using a gaussian distribution. It is represented as \(p_{j|i}\).
-** the probability is computed using the formula \(p_{j|i} = \frac{exp(-||x_i-x_j||^2/\sigma^2)}{\sum_{k \neq i}(-||x_i - x_k||^2/\sigma^2)\)
+** the probability is computed using the formula \(p_{j|i} = \frac{exp(-||x_i-x_j||^2/\sigma^2)}{\sum_{k \neq i}(-||x_i - x_k||^2/\sigma^2)}\)
 *** Computes the probability of getting \(x_j\) normalized over the probability of all points
 ** We can also do this for the low dimensional mapping for all \(y_i\) and all \(y_j\)
 ** Where the probability distribution will be notated as \(q_{j|i}\) and the computation is the same for the high dimensional case but using the low dimensional points. And the variance is set to \(1/\sqrt2\)
