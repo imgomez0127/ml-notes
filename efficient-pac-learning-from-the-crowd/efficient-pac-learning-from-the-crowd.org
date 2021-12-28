@@ -1,5 +1,6 @@
 #+TITLE: Efficient PAC Learning from the crowd
 #+STARTUP: latexpreview
+#+STARTUP: inlineimages
  notes were made after I read the Intro and notation however the core idea is that we want to create an algorithm to efficiently learn from a crowd of generated data where we cannot assure how correct a label is from a given labeler, and we want to do this with low label cost, and high accuracy.
  The main idea is to use boosting methods and interleave the data collection process with the boosting algorithm since most papers focused on data collection and learning from noisy data as seperate tasks. this paper novelly interleaves both to make an algorithm which has better performance.
 * 3. A baseline algorithm

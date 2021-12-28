@@ -52,7 +52,7 @@
 ** Unfolding Computational Graphs
 *** Unfolding the computational graphs using recursive definitions we arrive at an acyclic representation of the computation graph.
 *** We can furthermore paramterize this function using an input x where we see we include the input and a summary of the hidden state to create the output sequence.
-*** Finaly we use extra features to extract the information out of the final h and make a prediction
+*** Finally we use extra features to extract the information out of the final h and make a prediction
 *** This hidden state is a lossy representation of the task-relevant aspects of the sequence till time T
 *** It is guarenteed to be lossy since the sequence is indefinitely long while the hidden state is fixed in size
 *** Due to selectively choosing which aspects of information to store. The hardest task for RNN's is when we need h to recover the input sequence like an autoencoder
