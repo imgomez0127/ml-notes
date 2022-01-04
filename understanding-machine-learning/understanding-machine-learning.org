@@ -1,0 +1,47 @@
+#+TITLE:Understanding Machine Learning From Theory to Algorithms
+#+STARTUP: latexpreview
+
+* 1. Introduction
+** 1.1 What is learning
+- Learning is the idea of turning experience into expertise.
+- An example of this is bait shyness from rats. Where rats will taste food and if they are nauseous will be wary of the food.
+- E.g. they label the certain food as poisonous.
+- For email spam classification the naive "learning" approach can be seen in the rats where we just memorize what is spam and if it has been seen before label it as spam/not spam.
+- While learning by memorization can be useful it lacks the ability of rats to generalize (inductive reasoning/inference)
+- However, just inductive reasoning by itself can be bad since like Pigeon Superstition we can draw inferences that are only caused by correlation and not causation.
+- Therefore, to prevent this type of learning in our ML systems we must provide clear definitions to prevent these "superstitions" from happening
+- It has been shown that for rats they do not learn that electricical shocks or other negative effects from the food cause bait shyness.
+- This is because there is a prior belief that the rats have that they need to learn from nausea.
+- Thus we must also be able to include prior knowledge or an inductive bias to our machine learning systems so that they can learn well.
+- The benefit of prior knowledge is that with more prior knowledge we can create a better learning algorithm which learns easier.
+- However, this makes the learning algorithm less flexible.
+** 1.2 When do we need ML
+- We need ML for tasks that are too complex to program. (e.g. stuff that humans are able to do intuitively without precise definitions)
+- Or tasks beyond human capabilities (e.g. analyzing big data)
+- When we need adaptive systems due to changing inputs and outputs
+** 1.3 Types of learning
+- Supervised vs Unsupervised
+- In the supervised case the learner receives some extra information such as labels
+- This makes the learning task easier, and the main goal is to take the provided extra knowledge to apply it to unseen examples
+- This is different from the unsupervised case where the main goal is to come up with some patterns that naturally exist within the dat
+- There is also the middle case where we are provided some information but want to predict more information than is given.
+- This is usually what is called reinforcement learning where we interact with an environment to get some small amounts of information (reward), and then try and predict more information about the given data (value of a chess board).
+- Active vs Passive learning
+- Active learning requires interaction with the environment (e.g. the model querys the environment for information)
+- this differs from passive learning where the model is provided the labeled information ready to be digested.
+- Helpfullness of the teacher
+- The teacher (environment/data) can have different models of helpfullness
+- Some teachers can be assumed as good teachers (clean data)
+- While others can be malicious (adversarial learning)
+- Online vs Batch
+- Whether the model has to make predictions while still learning vs batch where information is fed in all at once.
+** 1.4 Relations to other fields.
+- ML has a lot of overal with statistics, information theory, game theory, and optimization
+- ML is naturally a subfield of computer science but is extremely interdisciplinary.
+- In contrast to traditional AI, ML is not as focused on creating automated intelligent behavior, rather using the strengths of computing to aid humans.
+- Generally we assume that data is randomly generated, and our goal is to learn from this randomly generated data.
+- Thus there is a lot of overlap with statistics.
+- One main difference is that statistics is focused on hypothesis testing, where as machine learning is more focused on trying to find explanations using data.
+- Another main difference is that algorithmic efficiency matters more in the machine learning setting.
+- Finally, in statistics we assume many different things about the data distribution function (e.g. we are sampling from a random gaussian)
+- Whereas in machine learning we try to work in setting that is distribution-free (e.g. we do not make assumptions about the distribution of the data)

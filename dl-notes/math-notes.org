@@ -1,0 +1,40 @@
+#+TITLE: Math Notes
+#+STARTUP: latexpreview
+
+* Linear algebra
+** Scalars vectors matrices
+- scalar \(R^{1*1}\)
+- vector \(R^{n*1}\)
+- matrix \(R^{m*n}\)
+- Tensor > 3 dim
+** Multiplying vectors/matrices
+- Operation is self explanatory will just list properties
+- Distributive
+- Associative
+- transpose of the product is the product of both matrices transposed
+- \((AB)^T = B^TA^T\)
+** Inverse and Identity
+- Identity maps each vector to itself.
+- the inverse of a matrix is \(A*A^{-1}=I\)
+** Linear dependence
+- For the inverse to exist we must have exactly one solution for \(b\)
+- The other case is that there are infinitely or no solutions
+- We can view this as each column in the column space mapping to a direction from the origin where each value of b is a scaling term. (linear combination)
+- The span is the set of all vectors that can be reached using a linear mapping
+- Thus to determine if \(Ax=b\) has a solution we need to test if b is in the column space or range of A (column space is the span of the columns of a set of vectors)
+- Therefore to have an inverse we need the column space of A to include all of \(R^m\)
+- Thus A must be a wide/square matrix (n >= m) to have a solution for all b
+- Intuitively if we have a 3x2 matrix we cannot model all of \(R^m\) because we only map a 2D space thus there is only a solution on the 2D plane
+- however, n >= m does not ensure that there exists a solution. Due to linear dependence
+- The dimensionality of the span goes down due to linear dependence e.g. 2x2 has a span of a line if the other column is linearly dependent
+- thus we need there to be at least one set of exactly m linearly independent columns
+- To ensure an inverse we need n = m thus we need a square matrix with n linearly independent columns (since if n > m we can have multiple solutions) this is known as *singular*
+** Special kinda of matrices
+- Diagonal matrices are matrices which only have non-zero numbers on the diagonal
+- Diag(v) where v is a vector is the matrix with v as the diagonal
+- the good thing is that diag(v)*x is an elementwise product of the two vectors v and x
+- The inverse of a diagonal matrix is 1/v
+- not all diagonal matrices are square
+- A symmetric matrix is when A = A.T
+- a uint vector is a vector with a unit L2 norm (unit = 1)
+-
