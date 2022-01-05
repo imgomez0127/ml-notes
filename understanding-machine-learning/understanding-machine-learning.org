@@ -45,3 +45,19 @@
 - Another main difference is that algorithmic efficiency matters more in the machine learning setting.
 - Finally, in statistics we assume many different things about the data distribution function (e.g. we are sampling from a random gaussian)
 - Whereas in machine learning we try to work in setting that is distribution-free (e.g. we do not make assumptions about the distribution of the data)
+* 2. A Gentle Start
+- Initially we pose the learning task as with a simple problem. Assume that you arrive at a new island, and want to classify papayas. Given a set of features can we learn to classify papayas as tasty or not tasty
+** 2.1 A Formal Model - The statistical learning framework
+- The domain set is the set \(X\) is the set of all features that we wish to label. we refer to points in the domain set as instances
+- The label set \(Y\) is the set of all labels for the case of this book we will usually assume that it is \(\{1, -1\}/\{0, 1\}\)
+- The training data \(S\) is a sequence of points in \(X \times Y\) this is what the learner's input is
+- The learner outputs a classifier \(h: X \rightarrow Y\). This is called a predictor/hypothesis/classifier.
+- We designate a learning algorithm A and say that A(S) is the classifier the learning algorithm outputs.
+- For a simple data generating model we assume that there is some underlying distribution that generates the data.
+- We refer to this probability distribution as \(D\) and the distribution over some input set as \(D(X)\)
+- We make little to no assumptions about the data generating distribution as to keep our analysis in a general sense.
+- We assume there is some correct labeling function \(f:X \rightarrow Y\) where this function will correctly output \(y_i = f(x_i)\) \(\forall i\)
+- We can say that each data point could be genereated by sampling some instance in the domain set, and then labeling it with the correct labeling function (true classifier)
+- To measure success we look at some event A where \(A \subset X\). We denote \(D(A)\) as the probability of getting this event. Given some function \(\pi: X \rightarrow \{0, 1\}\) we can construct A such that A is the subset of X where the function outputs a 1. Finally we can denote the probability as \(P_{x \sim D}[\pi(x)]\)
+- Thus we can formally define the measure of success as the probability of \(L_{(D, f)} = P_{x \sim D}[f(x) \neq h(x)] = D({x : f(x) \neq h(x)\)
+- As a note the learner has no information over the data distribution D, and can only learn about the distribution through the training set \(S\)
