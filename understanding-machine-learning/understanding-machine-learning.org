@@ -80,7 +80,7 @@
 - We first define \(h_S \in argmin L_s(h)\)
 - Next we assume that all points are sampled i.i.d.
 - We also assume the realizability assumption where there will always exist a classifier that is perfect.
-- Now because there is randomness in sampling our data distribution we must try and upperbound the probability of getting a bad set, also we must assume that our answer cannot be correct due to the fact that our sample set may not cover the fine details.
+- Now because there is randomness in sampling our data distribution we must try and upperbound the probability of getting a bad training set, also we must assume that our answer cannot be correct due to the fact that our sample set may not cover the fine details.
 - Hence we introduce parameters \(\delta\) to represent the probability of failure of learning and \(\epsilon\) to represent how accurate our predictor is (e.g. probability of being correct 1-risk)
 - *Insert proof which upperbounds the probability of getting an unrepresentative/missleading sample is upperbounded by the value*
 - \(D(S_{|x}: L(h) > \epsilon) \leq |H|e^{-\epsilon m}\)
