@@ -1,4 +1,4 @@
-#+TITLE:Understanding Machine Learning From Theory to Algorithms
+#+TITLE:Understanding Machine Learning From Theory to Algorithms by Shai Shalev-Schwartz and Shai Ben-David
 #+STARTUP: latexpreview
 
 * 1. Introduction
@@ -61,3 +61,27 @@
 - To measure success we look at some event A where \(A \subset X\). We denote \(D(A)\) as the probability of getting this event. Given some function \(\pi: X \rightarrow \{0, 1\}\) we can construct A such that A is the subset of X where the function outputs a 1. Finally we can denote the probability as \(P_{x \sim D}[\pi(x)]\)
 - Thus we can formally define the measure of success as the probability of \(L_{(D, f)} = P_{x \sim D}[f(x) \neq h(x)] = D({x : f(x) \neq h(x)\)
 - As a note the learner has no information over the data distribution D, and can only learn about the distribution through the training set \(S\)
+** 2.2 Empirical Risk Minimization
+- The output of a learner is \(h_s: X \rightarrow Y\) (a predictor)
+- The goal is to find the predictor which minimizes the loss over the distribution and true classifier
+- Since the learning algorithm cannot see the distribution we must minimize the Loss in respect to our training set
+- We shall instead use the notion of the empircal risk/emprical error. Which is just the application of the true loss to a training set
+- Formally defined as \(\frac{|\{x \in [m]: h(x_i) \neq f(x_i)\}|}{m}\)
+- Coming up with a predictor that solves this is called the Empirical Risk Minimization
+- The main problem with this is overfitting which is the case where the Empirical Risk is minimized but the True Risk is high
+- Hence we need to find cases where ERM is solved while the True Risk is also low.
+** 2.3 Empirical Risk with an Inductive Bias
+- One way to solve this is to apply ERM to a restricted search space by choosing a set or predictors.
+- This is solved by performing ERM over a hypothesis class called \(H\) where we try to solve \(ERM_H(S) \in argmin_{h \in H} L_S(h)\)
+- By restricting this search space we are "biasing" the algorithm towards certain classifiers. This is known as an inductive bias.
+- This bias should be based on some prior knowledge, however, Choosing a more restrictive hypothesis class will cause a stronger inductive bias. However, it will prevent the algorithm from overfitting.
+- The simplest way we can restrict an algorithm is by restricting the size to a finite class.
+- We can now prove that given a finite class it is always possible to solve the learning problem given a large enough sample size.
+- We first define \(h_S \in argmin L_s(h)\)
+- Next we assume that all points are sampled i.i.d.
+- We also assume the realizability assumption where there will always exist a classifier that is perfect.
+- Now because there is randomness in sampling our data distribution we must try and upperbound the probability of getting a bad set, also we must assume that our answer cannot be correct due to the fact that our sample set may not cover the fine details.
+- Hence we introduce parameters \(\delta\) to represent the probability of failure of learning and \(\epsilon\) to represent how accurate our predictor is (e.g. probability of being correct 1-risk)
+- *Insert proof which upperbounds the probability of getting an unrepresentative/missleading sample is upperbounded by the value*
+- \(D(S_{|x}: L(h) > \epsilon) \leq |H|e^{-\epsilon m}\)
+- Thus solving for m we get the sample complexity to be \(m \geq \frac{log(|H|/\delta)}{\epsilon}\)
