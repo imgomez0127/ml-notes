@@ -22,5 +22,30 @@
 - The new metrics focus on preserving language while being factually sound
 - Benchmarks focus on how editors work on the generated data
 - Modeling techniques focus on improving the generalizability of the model to unseen domains using few-shot learning and LLMs.
-  # Task Formulation
-  - Given an input text x the models goal is to generate outputs y,A
+## Task Formulation
+- Given an input text x the model's goal is to generate the outputs y,A
+- Where y is the output revision text and A is a list of evidence \({e_1,...,e_n}\) where the \(e_1\) is the retrieved documents for a given attribution report.
+- We evaluate the output through two metrics.
+- Attribution - How good the model utilizes the retrieved evidence.
+- Preservation - How close y is to x.
+- Attribution depends on both the quality of A to revise x and how the model modifies x to get y.
+### Measuring Attribution
+- Attribution is based on if given evidence from a set A that "According to A, y".
+- The key thing to note is attribution is a binary evaluation.
+- We further extend this to compute the average attribution over each sentence.
+- Thus Attr_AIS(y,A) is a measure of the percentage of attribution.
+- When establishing Attr we can also give surrounding sentences and context.
+- When running evaluation we give a maximum number of evidence snippets in this case M = 5.
+- To approximate human evaluation we use E2E NLI we call this model auto AIS. This model find incorrect sequences in a statement given factual information.
+- Before running auto AIS we decontextualize each sentence.
+- Decontextualization means that we merge multiple sentences/evidence and edit it to remove the need for context.
+### Measuring Preservation
+- To measure preservation we ask annotators to decide if the revion preserves the orginal text's message.
+- This notion of message preservation is also a binary evaluation.
+- We combine this with max(1-(Lev(x,y)/len(x)), 0) to have a metric which makes sure that intent is preserved with the minimal amount of edits.
+- e.g. \(Pres_comb(x, y) = Pres_intent(x, y) * Pres_lev(x, y)\)
+### Discussion
+- We cannot optimize for attribution alone due to the fact that an adversary could replace x with \(y \in A\) and have a 100% attribution.
+- Therefore we report a harmonic mean similar e.g. an F1_AP.
+## Approach
+
