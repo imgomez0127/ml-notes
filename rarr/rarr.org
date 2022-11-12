@@ -2,23 +2,25 @@
 #+STARTUP: latexpreview
 #+STARTUP: inlineimages
 # Abstract
-* LM's excel at many tasks, however, they do not have an attribution mechanism for external evidence.
-* RARR provides a methodology of taking in LM outputs and revising the outputs to support attribution for external evidence.
-* This is done by finding attribution for the LM's output, and editing the output to fix unsupported content. While also perserving the original output.
-* RARR tends to improve the attribution while also keeping the output text faithful to the model output.
-* RARR only requires few training samples, a LLM, and a web search.
+- LM's excel at many tasks, however, they do not have an attribution mechanism for external evidence.
+- RARR provides a methodology of taking in LM outputs and revising the outputs to support attribution for external evidence.
+- This is done by finding attribution for the LM's output, and editing the output to fix unsupported content. While also perserving the original output.
+- RARR tends to improve the attribution while also keeping the output text faithful to the model output.
+- RARR only requires few training samples, a LLM, and a web search.
 # Introduction
-* LM's and other TGMs are important for many AI systems.
-* While LLM's are good at a variety of tasks there are still problems caused by the lack of attribution to evidence. This causes LLM's to generate false/biased/misleading statements ("hallucinations").
-* We would like to trust the output of a TGM and provide an attribution report to justify the output.
-* Most TGMs lack an attribution mechanism.
-* Recent work has been done on training retrieval augments models (RAMs). These models retrieve a document and then generate text using the document as a condition for the output.
-* While this improves performance it does not guarentee attribution since model's can optimize loss without having a high attribution rating.
-* Therefore, LM and attribution are not necesarilly aligned when training RAMs.
-* The high level idea for RARR is that we first generate a text prompt from a TGM, and then find attributing evidence.
-* Afterwards we revise the text prompt to make it consistent with the evidence. Which helps to perserve the model's stylistic output.
-* While TGMs struggle with factual memorization they are good at generating human sounding language. RARR acts to improve this retroactively by editing the output for factual soundness.
-* This paper proposes new metrics, benchmarks, and modeling methods. 
-* The new metrics focus on preserving language while being factually sound
-* Benchmarks focus on how editors work on the generated data
-* Modeling techniques focus on improving the generalizability of the model to unseen domains using few-shot learning and LLMs.
+- LM's and other TGMs are important for many AI systems.
+- While LLM's are good at a variety of tasks there are still problems caused by the lack of attribution to evidence. This causes LLM's to generate false/biased/misleading statements ("hallucinations").
+- We would like to trust the output of a TGM and provide an attribution report to justify the output.
+- Most TGMs lack an attribution mechanism.
+- Recent work has been done on training retrieval augments models (RAMs). These models retrieve a document and then generate text using the document as a condition for the output.
+- While this improves performance it does not guarentee attribution since model's can optimize loss without having a high attribution rating.
+- Therefore, LM and attribution are not necesarilly aligned when training RAMs.
+- The high level idea for RARR is that we first generate a text prompt from a TGM, and then find attributing evidence.
+- Afterwards we revise the text prompt to make it consistent with the evidence. Which helps to perserve the model's stylistic output.
+- While TGMs struggle with factual memorization they are good at generating human sounding language. RARR acts to improve this retroactively by editing the output for factual soundness.
+- This paper proposes new metrics, benchmarks, and modeling methods.
+- The new metrics focus on preserving language while being factually sound
+- Benchmarks focus on how editors work on the generated data
+- Modeling techniques focus on improving the generalizability of the model to unseen domains using few-shot learning and LLMs.
+  # Task Formulation
+  - Given an input text x the models goal is to generate outputs y,A
